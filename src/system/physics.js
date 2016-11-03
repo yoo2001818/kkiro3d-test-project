@@ -32,8 +32,8 @@ export default class PhysicsSystem {
           other = swp;
         }
         if (entity.physics == null) return;
-        if (this.looped[other.id]) return;
-        this.looped[other.id] = true;
+        if (this.looped[entity.id]) return;
+        this.looped[entity.id] = true;
         // Test - pushing other object
         vec3.subtract(tmpVec2, bounds.max, bounds.min);
         // Choose biggest one

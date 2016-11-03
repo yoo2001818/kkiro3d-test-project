@@ -3,3 +3,4 @@ export { default as player } from './player';
 export { default as fps } from './fps';
 export { default as scene } from './scene';
 export { default as physics } from './physics';
+export { default as respawn } from './respawn';

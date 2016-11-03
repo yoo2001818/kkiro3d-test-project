@@ -4,7 +4,7 @@ export default {
   component: {
     onGround: false,
     gravity: 10,
-    jump: 5
+    jump: 6
   },
   schema: {
     onGround: {

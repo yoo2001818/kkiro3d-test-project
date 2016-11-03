@@ -55,6 +55,18 @@ export default {
         }
       }
     },
+    test2: {
+      shader: 'phong',
+      uniforms: {
+        uMaterial: {
+          ambient: '#44b13a',
+          diffuse: '#44b13a',
+          specular: '#7cb377',
+          reflectivity: '#0000000',
+          shininess: 90
+        }
+      }
+    },
     player: {
       shader: 'phong',
       uniforms: {
