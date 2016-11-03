@@ -12,47 +12,19 @@ export default class PlayerNetworkSystem {
           entity: -1
         });
         // Create a player for the client
-        let entity;
-        let family = this.engine.systems.family.get(
-          'camera', 'networkTemporary', 'fps');
-        family.entities.forEach(e => {
-          let owner = e.networkTemporary.owner;
-          if (id === owner) entity = e;
-        });
-        if (entity == null) {
-          entity = this.createEntity(id);
-        }
-        this.get(id).entity = entity.id;
+        let entity = this.createEntity(id);
+        // this.get(id).entity = entity.id;
         if (this.getId() === id) {
           this.engine.actions.renderer.camera.set(entity);
         }
       },
-      'entity.delete:pre!': (args) => {
-        // Prevent player deletion if being used
-        let entity = args[0];
-        if (entity == null) return args;
-        if (this.isPlayer(entity)) return null;
-        return args;
-      },
       'external.start:post@200!': ([isGlobal]) => {
         if (!isGlobal) return;
         // Everybody gets an entity if the player doesn't have one.
-        let checkArr = [];
-        let family = this.engine.systems.family.get(
-          'camera', 'networkTemporary', 'fps');
-        family.entities.forEach(entity => {
-          let owner = entity.networkTemporary.owner;
-          checkArr[owner] = entity;
-        });
         this.engine.systems.network.clients.forEach(id => {
           if (this.get(id).type !== 'game') return;
-          let entity;
-          if (checkArr[id] == null) {
-            entity = this.createEntity(id);
-          } else {
-            entity = checkArr[id];
-          }
-          this.get(id).entity = entity.id;
+          let entity = this.createEntity(id);
+          // this.get(id).entity = entity.id;
           if (this.getId() === id) {
             this.engine.actions.renderer.camera.set(entity);
           }
@@ -71,13 +43,6 @@ export default class PlayerNetworkSystem {
   }
   get(id) {
     return this.engine.systems.network.getData(id);
-  }
-  isPlayer(entity) {
-    let notEntity = this.engine.systems.network.clients.every(id => {
-      let data = this.get(id);
-      return data.player !== entity.id;
-    });
-    return !notEntity;
   }
   createEntity(id) {
     // Feel free to change this routine - it is used to spawn player object.

@@ -1,12 +1,13 @@
+import { vec3 } from 'gl-matrix';
 import { signalRaw } from 'fudge';
 
 export default {
-  component: {
-    velocity: [0, 0, 0]
-  },
+  component: data => data ? new Float32Array(data) : vec3.create(),
   schema: {
     velocity: {
-      type: 'vector'
+      type: 'vector',
+      getValue: (entity) => entity.velocity,
+      setValue: (entity, value) => ['velocity.set', entity, value]
     }
   },
   actions: {
@@ -19,7 +20,10 @@ export default {
       });
     */
     set: signalRaw(([entity, data]) => {
-      Object.assign(entity.velocity, data);
+      vec3.copy(entity.velocity, data);
+    }),
+    add: signalRaw(([entity, data]) => {
+      vec3.add(entity.velocity, entity.velocity, data);
     })
   }
 };

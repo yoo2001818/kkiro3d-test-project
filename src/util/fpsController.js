@@ -78,6 +78,12 @@ export default class FPSCameraController {
     if (this.keys[39] || this.keys[68]) {
       vec3.add(velocity, velocity, [-1, 0, 0]);
     }
+    if (this.keys[32]) {
+      let parent = this.engine.state.entities[camera.parent];
+      if (parent && parent.physics != null) {
+        this.engine.actions.external.execute('physics.jump', parent);
+      }
+    }
     if (velocity[0] !== 0 || velocity[1] !== 0 || velocity[2] !== 0) {
       this.engine.actions.external.execute('fps.move', camera, velocity, delta);
     }

@@ -8,10 +8,10 @@ export default class VelocitySystem {
     this.hooks = {
       // Define signals to listen. Putting ! at the end will make it faster,
       // but it will be called with an array, e.g. callback(args).
-      'external.update!': ([delta]) => {
+      'external.update@1000!': ([delta]) => {
         this.family.entities.forEach(entity => {
-          vec3.copy(tmpVec, entity.velocity.velocity);
-          vec3.scale(tmpVec, tmpVec, delta);
+          vec3.copy(tmpVec, entity.velocity);
+          vec3.scale(tmpVec, tmpVec, Math.min(1/60, delta));
           this.engine.actions.transform.translate(entity, tmpVec);
         });
       }
