@@ -1,0 +1,81 @@
+[
+  {
+    "transform": {
+      "position": [
+        2.8120312690734863,
+        2.1992642879486084,
+        -5.909425258636475
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Player",
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.5,
+        1,
+        0.5
+      ]
+    }
+  },
+  {
+    "transform": {
+      "position": [
+        0, 0.8, 0
+      ],
+      "scale": [
+        1, 1, 1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "PlayerCamera",
+    "camera": {},
+    "fps": {
+      "moveParent": true
+    }
+  },
+  {
+    "transform": {
+      "position": [
+        0, 0, 0
+      ],
+      "scale": [
+        0.5, 1, 0.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "mesh": {
+      "geometry": "cylinder",
+      "material": "test",
+      "visible": true,
+      "mirror": false
+    },
+    "name": "PlayerMesh"
+  }
+]

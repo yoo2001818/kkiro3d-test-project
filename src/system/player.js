@@ -1,3 +1,5 @@
+import playerTemplate from '../scene/playerData.json';
+
 // Used to store player data, spawn player entity.
 export default class PlayerNetworkSystem {
   constructor() {
@@ -80,16 +82,21 @@ export default class PlayerNetworkSystem {
   createEntity(id) {
     // Feel free to change this routine - it is used to spawn player object.
     // It MUST contain camera component, as it is used to render the screen too.
-    return this.engine.actions.entity.create({
-      name: 'Player',
-      transform: {
-        position: [0, 0, 0]
-      },
-      camera: {},
-      networkTemporary: {
-        owner: id
-      },
-      fps: {}
+    let parent = null;
+    let camera = null;
+    playerTemplate.forEach(template => {
+      let entity = this.engine.actions.entity.create(Object.assign(template, {
+        parent: parent,
+        id: null,
+        networkTemporary: {
+          owner: id
+        }
+      }));
+      if (parent == null) {
+        parent = entity.id;
+      }
+      if (entity.camera) camera = entity;
     });
+    return camera;
   }
 }
