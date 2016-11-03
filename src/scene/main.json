@@ -1,0 +1,86 @@
+[
+  {
+    "entityId": 2,
+    "selected": -1,
+    "selectedType": "entity",
+    "outlineType": "entity",
+    "cursor": [
+      0,
+      0,
+      0
+    ],
+    "time": 12.167245758,
+    "running": true
+  },
+  [
+    {
+      "id": 0,
+      "name": "Editor Camera",
+      "transform": {
+        "position": [
+          2.3866848945617676,
+          3.951071262359619,
+          4.305692195892334
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "rotation": [
+          -0.32118263840675354,
+          0.23620040714740753,
+          0.08306345343589783,
+          0.9133190512657166
+        ]
+      },
+      "camera": {
+        "type": "persp",
+        "near": 0.3,
+        "far": 100,
+        "fov": 1.2217304763960306,
+        "zoom": 1
+      },
+      "blenderController": {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius": 6.312384799999999
+      },
+      "networkTemporary": {
+        "owner": 0
+      }
+    },
+    {
+      "id": 1,
+      "transform": {
+        "position": [
+          0,
+          0,
+          -3.322453737258911
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "name": "New Entity",
+      "mesh": {
+        "geometry": "box",
+        "material": "test",
+        "visible": true,
+        "mirror": false
+      }
+    }
+  ],
+  []
+]

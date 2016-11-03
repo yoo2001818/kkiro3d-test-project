@@ -23,8 +23,6 @@ engine.systems.network.offlineMeta = {
   type: 'editor'
 };
 
-// engine.systems.network.connect('ws://localhost:23482')
-
 engine.start();
 
 startUpdate(engine);
