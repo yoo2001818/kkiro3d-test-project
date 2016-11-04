@@ -19,7 +19,7 @@ export default class PhysicsSystem {
             this.engine.actions.physics.setOnGround(e, false);
           }
           this.engine.actions.velocity.add(e,
-            [0, -Math.min(1/60, delta) * e.physics.gravity, 0]);
+            [0, -Math.min(1/20, delta) * e.physics.gravity, 0]);
         });
       },
       'collision.collide!': ([entity, other, bounds]) => {

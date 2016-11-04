@@ -11,7 +11,7 @@ export default class VelocitySystem {
       'external.update@1000!': ([delta]) => {
         this.family.entities.forEach(entity => {
           vec3.copy(tmpVec, entity.velocity);
-          vec3.scale(tmpVec, tmpVec, Math.min(1/60, delta));
+          vec3.scale(tmpVec, tmpVec, Math.min(1/20, delta));
           this.engine.actions.transform.translate(entity, tmpVec);
         });
       }
