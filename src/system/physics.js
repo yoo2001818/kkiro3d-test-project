@@ -10,10 +10,10 @@ function sign(x) {
 
 export default class PhysicsSystem {
   constructor() {
-    this.looped = [];
+    this.looped = {};
     this.hooks = {
       'external.update@100!': ([delta]) => {
-        this.looped = [];
+        this.looped = {};
         this.family.entities.forEach(e => {
           if (e.velocity[1] < -0.05 && e.physics.onGround) {
             this.engine.actions.physics.setOnGround(e, false);
@@ -32,8 +32,9 @@ export default class PhysicsSystem {
           other = swp;
         }
         if (entity.physics == null) return;
-        if (this.looped[entity.id]) return;
-        this.looped[entity.id] = true;
+        let key = entity.id + ':' + other.id;
+        if (this.looped[key]) return;
+        this.looped[key] = true;
         // Test - pushing other object
         vec3.subtract(tmpVec2, bounds.max, bounds.min);
         // Choose biggest one
