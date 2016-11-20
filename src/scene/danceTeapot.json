@@ -1,0 +1,310 @@
+[
+  {
+    "id": 6,
+    "transform": {
+      "position": [
+        0.07183080911636353,
+        2.120215654373169,
+        0
+      ],
+      "scale": [
+        1,
+        1.0353615283966064,
+        1
+      ],
+      "rotation": [
+        -0.05734575167298317,
+        -4.665829500538621e-9,
+        8.122926686837673e-8,
+        0.9983543753623962
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 0.7,
+      "channels": [
+        {
+          "channel": "transform.scale.y",
+          "input": [
+            0,
+            0.35,
+            0.7
+          ],
+          "output": [
+            1,
+            1.5,
+            1
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "block": {
+      "type": "danceTeapot"
+    }
+  },
+  {
+    "id": 5,
+    "transform": {
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        -0.1726057082414627,
+        -1.4043767926352757e-8,
+        8.014200858497134e-8,
+        0.9849910140037537
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerX",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -20,
+            20,
+            -20
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "parent": 0
+  },
+  {
+    "id": 8,
+    "transform": {
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        -0.1726057082414627,
+        -1.4043767926352757e-8,
+        8.014200858497134e-8,
+        0.9849910140037537
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerX",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -20,
+            20,
+            -20
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "parent": 1
+  },
+  {
+    "id": 11,
+    "transform": {
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        -0.1726057082414627,
+        -1.4043767926352757e-8,
+        8.014200858497134e-8,
+        0.9849910140037537
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerX",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -20,
+            20,
+            -20
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "parent": 2
+  },
+  {
+    "id": 10,
+    "transform": {
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        -0.1726057082414627,
+        -1.4043767926352757e-8,
+        8.014200858497134e-8,
+        0.9849910140037537
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerX",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -20,
+            20,
+            -20
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "parent": 3
+  },
+  {
+    "id": 13,
+    "transform": {
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        -0.1726057082414627,
+        -1.4043767926352757e-8,
+        8.014200858497134e-8,
+        0.9849910140037537
+      ]
+    },
+    "name": "TeapotSnake",
+    "mesh": {
+      "geometry": "teapot",
+      "material": "test2",
+      "visible": true,
+      "mirror": false
+    },
+    "animation": {
+      "playing": true,
+      "start": 0,
+      "repeat": 0,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerX",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -20,
+            20,
+            -20
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    },
+    "parent": 4
+  }
+]

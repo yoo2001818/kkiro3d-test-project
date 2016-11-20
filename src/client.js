@@ -8,8 +8,10 @@ import createRenderer from './renderer';
 import createEngine from './engine';
 import RendererSystem from 'kkiro3d/lib/system/renderer';
 import createSynchronizer from 'kkiro3d/lib/util/createSynchronizer';
+import jsonReplacer from 'kkiro3d/lib/util/jsonReplacer';
 import startUpdate from './util/startUpdate';
 import FPSController from './util/fpsController';
+import download from './util/download';
 
 let engine = createEngine();
 
@@ -24,7 +26,8 @@ renderer.canvas.height = document.documentElement.clientHeight;
 
 new FPSController(engine, renderer.canvas, window);
 
-let blocks = ['dirt', 'grass', 'woodPlank', 'cobble', 'log', 'leaf'];
+let blocks = ['dirt', 'grass', 'woodPlank', 'cobble', 'log', 'leaf',
+  'creeper', 'magicLight', 'danceTeapot'];
 let index = 0;
 let displayer = document.createElement('div');
 displayer.style.background = '#ffffff';
@@ -49,6 +52,11 @@ window.addEventListener('click', (e) => {
   if (!document.pointerLockElement && !document.mozPointerLockElement) {
     return;
   }
+  if (e.button === 1) {
+    let data = JSON.stringify(engine.getState(), jsonReplacer, 2);
+    download(data, 'scenePlay.json');
+    return;
+  }
   // Spawn new block
   let id = renderer.effects.mousePick.pick(
     renderer.canvas.width / 2, renderer.canvas.height / 2);
@@ -57,7 +65,11 @@ window.addEventListener('click', (e) => {
   // Get position of the entity
   let entity = engine.state.entities[id];
   if (entity == null) return;
-  if (entity.block == null) return;
+  // Traverse to parent while we meet a block
+  while (entity != null && entity.block == null) {
+    entity = engine.state.entities[entity.parent];
+  }
+  if (entity == null || entity.block == null) return;
   if (e.button === 2) {
     let pos = engine.systems.matrix.getPosition(entity);
     vec3.scale(normal, normal, 2);
@@ -71,7 +83,7 @@ window.addEventListener('click', (e) => {
     });
   } else if (e.button === 0) {
     if (entity.block.type === 'bedrock') return;
-    engine.actions.external.execute('entity.delete', entity);
+    engine.actions.external.execute('parent.deleteHierarchy', entity);
   }
 });
 
