@@ -25,9 +25,9 @@ export default class FPSCameraController {
       if (document.pointerLockElement || document.mozPointerLockElement) {
         let camera = this.getCamera();
         if (camera == null) return;
-        if (camera.fps == null) return;
-        this.engine.actions.external.execute('fps.addRotation', camera,
-          -e.movementY / 400, e.movementX / 400);
+        if (camera.fpsController == null) return;
+        this.engine.actions.external.execute('fpsController.addRotation',
+          camera, -e.movementY / 400, e.movementX / 400);
         return;
       }
       let mouseX = e.layerX - this.node.width / 2;
@@ -48,12 +48,12 @@ export default class FPSCameraController {
   update(delta) {
     let camera = this.getCamera();
     if (camera == null) return;
-    if (camera.fps == null) return;
+    if (camera.fpsController == null) return;
 
     if (!this.node.requestPointerLock && !this.node.mozRequestPointerLock) {
       if (Math.abs(this.mouseX) > 10 || Math.abs(this.mouseY) > 10) {
-        this.engine.actions.external.execute('fps.addRotation', camera,
-          -Math.sin(this.mouseY / 4000), Math.sin(this.mouseX / 4000));
+        this.engine.actions.external.execute('fpsController.addRotation',
+          camera, -Math.sin(this.mouseY / 4000), Math.sin(this.mouseX / 4000));
       }
     }
 
@@ -85,7 +85,8 @@ export default class FPSCameraController {
       }
     }
     if (velocity[0] !== 0 || velocity[1] !== 0 || velocity[2] !== 0) {
-      this.engine.actions.external.execute('fps.move', camera, velocity, delta);
+      this.engine.actions.external.execute('fpsController.move', camera,
+        velocity, delta);
     }
   }
 }

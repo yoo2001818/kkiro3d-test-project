@@ -1,6 +1,8 @@
 import Renderer from 'webglue/lib/renderer';
 import RendererView from 'kkiro3d/lib/view/renderer';
 import mesh from 'kkiro3d/lib/view/renderer/effect/mesh';
+import meshInstanced from 'kkiro3d/lib/view/renderer/effect/meshInstanced';
+import lightShadow from 'kkiro3d/lib/view/renderer/effect/lightShadow';
 import light from 'kkiro3d/lib/view/renderer/effect/light';
 import skybox from 'kkiro3d/lib/view/renderer/effect/skybox';
 // List of kkiro3d built-in effects. Most of them are for debugging / editing
@@ -25,9 +27,15 @@ export default function initView(engine) {
   let renderer = new Renderer(gl);
 
   let rendererView = new RendererView(engine, renderer,
-    { mesh, light, skybox }
+    { mesh, meshInstanced, light, lightShadow, skybox }
   );
   rendererView.canvas = canvas;
+  // To avoid self-rendering
+  rendererView.checkers = [(entity) => {
+    let playerId = engine.systems.player.getSelf().entity;
+    let player = engine.state.entities[playerId];
+    return !engine.systems.parent.isConnected(player, entity);
+  }];
 
   canvas.addEventListener('contextmenu', e => e.preventDefault());
   return rendererView;

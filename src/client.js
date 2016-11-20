@@ -15,7 +15,7 @@ let engine = createEngine();
 // Sets up the renderer
 let renderer = createRenderer(engine);
 engine.addSystem('renderer', new RendererSystem(renderer, asset,
-  ['mesh', 'light', 'skybox']));
+  ['meshInstanced', 'mesh', 'light', 'lightShadow', 'skybox']));
 // Add renderer canvas to DOM
 document.body.appendChild(renderer.canvas);
 renderer.canvas.width = document.documentElement.clientWidth;

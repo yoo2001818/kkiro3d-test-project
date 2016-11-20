@@ -12,10 +12,10 @@ export default class PlayerNetworkSystem {
           entity: -1
         });
         // Create a player for the client
-        let entity = this.createEntity(id);
-        // this.get(id).entity = entity.id;
+        let result = this.createEntity(id);
+        this.get(id).entity = result.entity.id;
         if (this.getId() === id) {
-          this.engine.actions.renderer.camera.set(entity);
+          this.engine.actions.renderer.camera.set(result.camera);
         }
       },
       'external.start:post@200!': ([isGlobal]) => {
@@ -23,10 +23,10 @@ export default class PlayerNetworkSystem {
         // Everybody gets an entity if the player doesn't have one.
         this.engine.systems.network.clients.forEach(id => {
           if (this.get(id).type !== 'game') return;
-          let entity = this.createEntity(id);
-          // this.get(id).entity = entity.id;
+          let result = this.createEntity(id);
+          this.get(id).entity = result.entity.id;
           if (this.getId() === id) {
-            this.engine.actions.renderer.camera.set(entity);
+            this.engine.actions.renderer.camera.set(result.camera);
           }
         });
       }
@@ -47,21 +47,26 @@ export default class PlayerNetworkSystem {
   createEntity(id) {
     // Feel free to change this routine - it is used to spawn player object.
     // It MUST contain camera component, as it is used to render the screen too.
-    let parent = null;
     let camera = null;
-    playerTemplate.forEach(template => {
-      let entity = this.engine.actions.entity.create(Object.assign(template, {
-        parent: parent,
-        id: null,
-        networkTemporary: {
-          owner: id
-        }
-      }));
-      if (parent == null) {
-        parent = entity.id;
+    let playerTemplateMod = playerTemplate.slice();
+    playerTemplateMod[0] = Object.assign(playerTemplate[0], {
+      id: null,
+      networkTemporary: {
+        owner: id
       }
-      if (entity.camera) camera = entity;
     });
-    return camera;
+    let entity = this.engine.actions.parent.createHierarchy(playerTemplateMod);
+    // Find camera...
+    const traverseEntity = (entity) => {
+      if (entity.camera != null) camera = entity;
+      let children = this.engine.systems.parent.getChildren(entity);
+      if (children == null) return;
+      children.forEach(id => {
+        let child = this.engine.state.entities[id];
+        traverseEntity(child);
+      });
+    };
+    traverseEntity(entity);
+    return { camera: camera, entity: entity };
   }
 }
