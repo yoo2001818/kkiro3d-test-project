@@ -1,0 +1,272 @@
+{
+  "dirt": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Dirt",
+    "block": {
+      "type": "dirt"
+    },
+    "mesh": {
+      "geometry": "box",
+      "material": "dirt",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "grass": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "block": {
+      "type": "grass"
+    },
+    "name": "Grass",
+    "mesh": {
+      "geometry": "grass",
+      "material": "blocks",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "log": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Log",
+    "block": {
+      "type": "log"
+    },
+    "mesh": {
+      "geometry": "log",
+      "material": "blocks",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "leaf": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Leaf",
+    "block": {
+      "type": "leaf"
+    },
+    "mesh": {
+      "geometry": "box",
+      "material": "leaf",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "woodPlank": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "WoodPlank",
+    "block": {
+      "type": "woodPlank"
+    },
+    "mesh": {
+      "geometry": "box",
+      "material": "woodPlank",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "cobble": {
+    "id": 1,
+    "transform": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Cobble",
+    "block": {
+      "type": "cobble"
+    },
+    "mesh": {
+      "geometry": "box",
+      "material": "cobble",
+      "visible": true,
+      "mirror": false
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

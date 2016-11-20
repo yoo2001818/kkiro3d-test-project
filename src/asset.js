@@ -135,6 +135,18 @@ export default {
         uTexture: [1, 0, 0, 0, 1, 0, 0, 0, 1]
       }
     },
+    leaf: {
+      shader: 'phong',
+      uniforms: {
+        uMaterial: {
+          ambient: '#44b13a',
+          diffuse: '#44b13a',
+          specular: '#7cb377',
+          reflectivity: '#0000000',
+          shininess: 90
+        }
+      }
+    },
     test: {
       shader: 'phong',
       uniforms: {

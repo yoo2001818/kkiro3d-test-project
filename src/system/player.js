@@ -51,6 +51,9 @@ export default class PlayerNetworkSystem {
     let playerTemplateMod = playerTemplate.slice();
     playerTemplateMod[0] = Object.assign(playerTemplate[0], {
       id: null,
+      transform: {
+        position: [0, -300, 0]
+      },
       networkTemporary: {
         owner: id
       }

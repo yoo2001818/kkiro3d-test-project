@@ -5,6 +5,9 @@ import meshInstanced from 'kkiro3d/lib/view/renderer/effect/meshInstanced';
 import lightShadow from 'kkiro3d/lib/view/renderer/effect/lightShadow';
 import light from 'kkiro3d/lib/view/renderer/effect/light';
 import skybox from 'kkiro3d/lib/view/renderer/effect/skybox';
+import crosshair from './crosshair';
+import normalPick from './normalPick';
+import mousePick from 'kkiro3d/lib/view/renderer/effect/mousePick';
 // List of kkiro3d built-in effects. Most of them are for debugging / editing
 // purposes though.
 /*
@@ -27,7 +30,8 @@ export default function initView(engine) {
   let renderer = new Renderer(gl);
 
   let rendererView = new RendererView(engine, renderer,
-    { mesh, meshInstanced, light, lightShadow, skybox }
+    { crosshair, mousePick, normalPick, mesh, meshInstanced, light,
+      lightShadow, skybox }
   );
   rendererView.canvas = canvas;
   // To avoid self-rendering
@@ -36,6 +40,8 @@ export default function initView(engine) {
     let player = engine.state.entities[playerId];
     return !engine.systems.parent.isConnected(player, entity);
   }];
+  rendererView.top = 0;
+  rendererView.left = 0;
 
   canvas.addEventListener('contextmenu', e => e.preventDefault());
   return rendererView;

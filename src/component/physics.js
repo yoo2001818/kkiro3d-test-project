@@ -3,8 +3,8 @@ import { signalRaw } from 'fudge';
 export default {
   component: {
     onGround: false,
-    gravity: 10,
-    jump: 6
+    gravity: 30,
+    jump: 13
   },
   schema: {
     onGround: {
