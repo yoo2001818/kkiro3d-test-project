@@ -40,7 +40,11 @@ displayer.style.padding = '0.3em';
 displayer.innerHTML = blocks[index];
 document.body.appendChild(displayer);
 
+let lastWheel = 0;
+
 window.addEventListener('wheel', (e) => {
+  if (new Date().valueOf() - lastWheel < 50) return;
+  lastWheel = new Date().valueOf();
   if (e.deltaY > 0) index += 1;
   else index -= 1;
   if (index < 0) index = blocks.length - 1;
