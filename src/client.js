@@ -69,9 +69,26 @@ window.addEventListener('click', (e) => {
     return;
   }
   if (e.button === 1) {
-    let data = JSON.stringify(engine.getState(), jsonReplacer, 2);
-    download(data, 'scenePlay.json');
-    return;
+    if (!e.shiftKey) {
+      let data = JSON.stringify(engine.getState(), jsonReplacer, 2);
+      download(data, 'scenePlay.json');
+      return;
+    } else {
+      let input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.click();
+      input.addEventListener('change', () => {
+        let file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = e => {
+          engine.actions.external.execute('editor.load',
+            JSON.parse(e.target.result));
+        };
+        reader.readAsText(file);
+      });
+      return;
+    }
   }
   // Spawn new block
   let id = renderer.effects.mousePick.pick(
@@ -81,8 +98,7 @@ window.addEventListener('click', (e) => {
   // Get position of the entity
   let entity = engine.state.entities[id];
   if (entity == null) return;
-  if (entity.door) {
-    console.log('door');
+  if (entity.door && e.button === 2) {
     engine.actions.external.execute('door.set', entity, {
       open: !entity.door.open
     });
@@ -97,6 +113,16 @@ window.addEventListener('click', (e) => {
     let pos = engine.systems.matrix.getPosition(entity);
     vec3.scale(normal, normal, 2);
     vec3.add(normal, pos, normal);
+    // Make sure the user isn't there
+    let player = engine.state.entities[engine.systems.player.getSelf().entity];
+    if (player == null) return;
+    let playerPos = engine.systems.matrix.getPosition(player);
+    if ((pos[0] - 1) <= playerPos[0] && (pos[0] + 1) >= playerPos[0] &&
+      (pos[1] - 1) <= playerPos[1] && (pos[1] + 1) >= playerPos[1] &&
+      (pos[2] - 1) <= playerPos[2] && (pos[2] + 1) >= playerPos[2]
+    ) {
+      return;
+    }
     // Spawn it at new position..
     engine.actions.external.execute('block.spawn', blocks[index], {
       id: null,
