@@ -1,0 +1,140 @@
+[
+  {
+    "id": 6,
+    "transform": {
+      "position": [
+        4,
+        3.9999990463256836,
+        2
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "Door",
+    "block": {
+      "type": "door"
+    }
+  },
+  {
+    "id": 7,
+    "transform": {
+      "position": [
+        -1,
+        -1,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0.0018406598828732967,
+        0,
+        0.9999983310699463
+      ]
+    },
+    "name": "DoorHinge",
+    "parent": 0,
+    "animation": {
+      "playing": true,
+      "start": -2,
+      "repeat": 1,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.rotation.eulerY",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            0,
+            90,
+            0
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "transform": {
+      "position": [
+        1,
+        2,
+        -0.12
+      ],
+      "scale": [
+        1,
+        2,
+        0.12
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "name": "DoorMesh",
+    "parent": 1,
+    "mesh": {
+      "geometry": "door",
+      "material": "blocks",
+      "visible": true,
+      "mirror": false
+    },
+    "door": {
+      "open": true
+    },
+    "collision": {
+      "enabled": true,
+      "type": "aabb",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ]
+    },
+    "animation": {
+      "playing": true,
+      "start": -2,
+      "repeat": 1,
+      "duration": 2,
+      "channels": [
+        {
+          "channel": "transform.position.z",
+          "input": [
+            0,
+            1,
+            2
+          ],
+          "output": [
+            -0.12,
+            0.12,
+            -0.12
+          ],
+          "interpolation": "easeInOut"
+        }
+      ]
+    }
+  }
+]

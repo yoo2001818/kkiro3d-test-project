@@ -382,5 +382,6 @@ module.exports = {
     }
   ],
   "creeper": require('./creeper.json'),
-  "danceTeapot": require('./danceTeapot.json')
+  "danceTeapot": require('./danceTeapot.json'),
+  "door": require('./door.json')
 }

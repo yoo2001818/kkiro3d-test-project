@@ -18,8 +18,10 @@ export default class PhysicsSystem {
           if (e.velocity[1] < -0.05 && e.physics.onGround) {
             this.engine.actions.physics.setOnGround(e, false);
           }
-          this.engine.actions.velocity.add(e,
-            [0, -Math.min(1/20, delta) * e.physics.gravity, 0]);
+          if (e.physics.fall) {
+            this.engine.actions.velocity.add(e,
+              [0, -Math.min(1/20, delta) * e.physics.gravity, 0]);
+          }
         });
       },
       'collision.collide!': ([entity, other, bounds]) => {

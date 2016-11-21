@@ -27,7 +27,7 @@ renderer.canvas.height = document.documentElement.clientHeight;
 new FPSController(engine, renderer.canvas, window);
 
 let blocks = ['dirt', 'grass', 'woodPlank', 'cobble', 'log', 'leaf',
-  'creeper', 'magicLight', 'danceTeapot'];
+  'creeper', 'magicLight', 'danceTeapot', 'door'];
 let index = 0;
 let displayer = document.createElement('div');
 displayer.style.background = '#ffffff';
@@ -48,6 +48,22 @@ window.addEventListener('wheel', (e) => {
   displayer.innerHTML = blocks[index];
 });
 
+window.addEventListener('keydown', (e) => {
+  if (e.keyCode === 16) {
+    let player = engine.state.entities[engine.systems.player.getSelf().entity];
+    if (player == null) return;
+    engine.actions.physics.setFall(player, false);
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  if (e.keyCode === 16) {
+    let player = engine.state.entities[engine.systems.player.getSelf().entity];
+    if (player == null) return;
+    engine.actions.physics.setFall(player, true);
+  }
+});
+
 window.addEventListener('click', (e) => {
   if (!document.pointerLockElement && !document.mozPointerLockElement) {
     return;
@@ -65,6 +81,13 @@ window.addEventListener('click', (e) => {
   // Get position of the entity
   let entity = engine.state.entities[id];
   if (entity == null) return;
+  if (entity.door) {
+    console.log('door');
+    engine.actions.external.execute('door.set', entity, {
+      open: !entity.door.open
+    });
+    return;
+  }
   // Traverse to parent while we meet a block
   while (entity != null && entity.block == null) {
     entity = engine.state.entities[entity.parent];

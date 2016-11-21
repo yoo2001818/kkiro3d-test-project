@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "express": "^4.14.0",
     "fudge": "^0.1.19",
     "gl-matrix": "^2.3.2",
     "kkiro3d": "^0.2.7",
@@ -45,6 +46,7 @@
     "react-dom": "^15.3.2",
     "react-fudge": "^0.1.12",
     "react-hot-loader": "^1.2.9",
+    "serve-static": "^1.11.1",
     "shallowequal": "^0.2.2"
   }
 }

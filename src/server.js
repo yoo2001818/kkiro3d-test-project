@@ -3,6 +3,13 @@ import { HostSynchronizer } from 'locksmith';
 import jsonReplacer from 'kkiro3d/lib/util/jsonReplacer';
 import createEngine from './engine';
 
+// Serve dist/ folder on 23481 port
+let app = require('express')();
+app.use(require('serve-static')('./dist'));
+app.listen(23481, function () {
+  console.log('Started app server on port 23481');
+});
+
 // Starts up kkiro3d multiplayer server
 const PORT = 23482;
 const FPS = 60;

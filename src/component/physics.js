@@ -4,7 +4,8 @@ export default {
   component: {
     onGround: false,
     gravity: 30,
-    jump: 13
+    jump: 13,
+    fall: true
   },
   schema: {
     onGround: {
@@ -15,7 +16,10 @@ export default {
     },
     jump: {
       type: 'number'
-    }
+    },
+    fall: {
+      type: 'checkbox'
+    },
   },
   actions: {
     set: signalRaw(([entity, data]) => {
@@ -23,6 +27,9 @@ export default {
     }),
     setOnGround: signalRaw(([entity, data]) => {
       entity.physics.onGround = data;
+    }),
+    setFall: signalRaw(([entity, data]) => {
+      entity.physics.fall = data;
     }),
     jump: signalRaw(function ([entity]) {
       if (!entity.physics.onGround) return;
