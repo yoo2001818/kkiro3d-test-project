@@ -56,7 +56,7 @@ window.addEventListener('keydown', (e) => {
   if (e.keyCode === 16) {
     let player = engine.state.entities[engine.systems.player.getSelf().entity];
     if (player == null) return;
-    engine.actions.physics.setFall(player, false);
+    engine.actions.external.execute('physics.setFall', player, false);
   }
 });
 
@@ -64,7 +64,7 @@ window.addEventListener('keyup', (e) => {
   if (e.keyCode === 16) {
     let player = engine.state.entities[engine.systems.player.getSelf().entity];
     if (player == null) return;
-    engine.actions.physics.setFall(player, true);
+    engine.actions.external.execute('physics.setFall', player, true);
   }
 });
 
