@@ -119,6 +119,7 @@
       "start": -2,
       "repeat": 1,
       "duration": 2,
+      "parent": -3,
       "channels": [
         {
           "channel": "transform.position.z",
